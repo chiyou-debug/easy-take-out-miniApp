@@ -4149,7 +4149,7 @@ var _index = __webpack_require__(/*! ../../utils/index.js */ 29);function _inter
   data: function data() {
     return {
       title: 'Hello',
-      // 去结算部分
+      // Check Out部分
       openOrderCartList: false,
       // 存放左侧滚动区域菜品分类数组
       typeListData: [],
@@ -20028,7 +20028,7 @@ exports.delDish = delDish;var clearOrder = function clearOrder(params) {return (
       params: params }));};
 
 
-// 提交订单 
+// Submit Order 
 exports.clearOrder = clearOrder;var payOrder = function payOrder(params) {return (
     (0, _request.request)({
       url: "/user/order/pay/".concat(params.tableId, "/").concat(params.jsCode),
@@ -21853,7 +21853,7 @@ var _default = {
 
       expirationTime: '',
       // rocallTime:'',
-      tablewareData: '无需餐具',
+      tablewareData: 'No cutlery required',
       tableware: '',
       packAmount: 0,
       value: [0, 0],
@@ -21862,14 +21862,14 @@ var _default = {
       tabIndex: 0,
       scrollinto: 'tab0',
       scrollH: 0,
-      popleft: ['今天', '明天'],
+      popleft: ['today', 'tomorrow'],
       visible: true,
       baseData: [
-      '无需餐具', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+      'No cutlery required', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
 
-      activeRadio: '无需餐具', //存的是选中的value值
-      radioGroup: ['依据餐量提供', '无需餐具'],
-      popright: ['立即派送', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00',
+      activeRadio: 'No cutlery required', //存的是选中的value值
+      radioGroup: ['According to meal', 'No required'],
+      popright: ['Deliver immediately', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00',
       '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30',
       '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00'],
 
@@ -22095,7 +22095,7 @@ var _default = {
 
       if (!this.address) {
         uni.showToast({
-          title: '请选择收货地址',
+          title: 'Please select delivery address',
           icon: 'none' });
 
         return false;
@@ -22103,7 +22103,7 @@ var _default = {
       var num = null;
       var status = null;
 
-      // this.tablewareData==='无需餐具'?0:Number(this.tablewareData)
+      // this.tablewareData==='No cutlery required'?0:Number(this.tablewareData)
       var params = (_params = {
         payMethod: 1,
         addressBookId: this.addressBookId,
@@ -22202,16 +22202,16 @@ var _default = {
         // 	// console.log(cont,'ceshi',this.activeRadio)
         this.num = Number(this.tableware);
         this.status = 0;
-        if (this.tableware === '无需餐具') {
+        if (this.tableware === 'No cutlery required') {
           this.num = 0;
           this.status = 0;
         }
-        if (this.tableware === '依据餐量提供') {
+        if (this.tableware === 'Provided according to meal size') {
           this.num = this.orderDishNumber;
           this.status = 1;
         }
 
-        if (this.tableware !== '依据餐量提供' || this.tableware !== '无需餐具') {
+        if (this.tableware !== 'Provided according to meal size' || this.tableware !== 'No cutlery required') {
           this.tablewareData = this.tableware + '份';
 
         } else {
@@ -22224,7 +22224,7 @@ var _default = {
         // 	// console.log(cont,'ceshi',this.activeRadio)
         this.tablewareData = cont;
         // 	// this.$emit('changeCont',cont )
-        if (this.activeRadio === '依据餐量提供') {
+        if (this.activeRadio === 'Provided according to meal size') {
           // this.tablewareData = this.activeRadio
           this.num = this.orderDishNumber;
           this.status = 1;

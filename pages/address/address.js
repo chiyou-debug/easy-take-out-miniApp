@@ -278,18 +278,18 @@ var _reachBottom = _interopRequireDefault(__webpack_require__(/*! @/components/r
     getLableVal: function getLableVal(item) {
       switch (item) {
         case '1':
-          return '公司';
+          return 'Company';
         case '2':
-          return '家';
+          return 'Home';
         case '3':
-          return '学校';
+          return 'Campus';
         default:
-          return '其他';}
+          return 'Others';}
 
     },
     getAddressList: function getAddressList() {var _this = this;
       this.testValue = false;
-      uni.showLoading({ title: '加载中', mask: true });
+      uni.showLoading({ title: 'loading...', mask: true });
       (0, _api.queryAddressBookList)().then(function (res) {
         if (res.code === 1) {
           setTimeout(function () {uni.hideLoading();}, 100);

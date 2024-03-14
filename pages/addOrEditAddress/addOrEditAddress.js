@@ -334,28 +334,21 @@ var _api = __webpack_require__(/*! ../api/api.js */ 24);function ownKeys(object,
       valueMan: true,
       valueWoman: true,
       showClass: false,
-      items: [
-      {
-        value: "0",
-        name: "先生" },
-
-      {
-        value: "1",
-        name: "女士" }],
+      
 
 
       current: 0,
       options: [
       {
-        name: "公司",
+        name: "Company",
         type: 1 },
 
       {
-        name: "家",
+        name: "Home",
         type: 2 },
 
       {
-        name: "学校",
+        name: "Campus",
         type: 3 }],
 
 
@@ -363,17 +356,24 @@ var _api = __webpack_require__(/*! ../api/api.js */ 24);function ownKeys(object,
       form: {
         name: "",
         phone: "",
-        // address: '',
-        type: 1,
-        // radio: 0,
-        sex: "0",
-        provinceCode: "11",
-        provinceName: "",
-        cityCode: "1101",
-        cityName: "",
-        districtCode: "110102",
-        districtName: "",
-        detail: "" },
+        address: "",
+        city: "",
+        eircode: "",
+        tags: ""
+        // name: "",
+        // phone: "",
+        // // address: '',
+        // type: 1,
+        // // radio: 0,
+        // sex: "0",
+        // provinceCode: "11",
+        // provinceName: "",
+        // cityCode: "1101",
+        // cityName: "",
+        // districtCode: "110102",
+        // districtName: "",
+        // detail: "" 
+      },
 
       // 联动省市县
       // 弹框的初始值
@@ -484,13 +484,13 @@ var _api = __webpack_require__(/*! ../api/api.js */ 24);function ownKeys(object,
     addAddressFun: function addAddressFun() {
       if (this.form.name === "") {
         return uni.showToast({
-          title: "联系人不能为空",
+          title: "Concact name can not be empty",
           duration: 1000,
           icon: "none" });
 
       } else if (this.form.phone === "") {
         return uni.showToast({
-          title: "手机号不能为空",
+          title: "Phone number can not be empty",
           duration: 1000,
           icon: "none" });
 
@@ -500,41 +500,36 @@ var _api = __webpack_require__(/*! ../api/api.js */ 24);function ownKeys(object,
           duration: 1000,
           icon: "none" });
 
-      } else if (this.address === "") {
+      } else if (this.form.address === "") {
         return uni.showToast({
-          title: "所在地区不能为空",
-          duration: 1000,
-          icon: "none" });
-
-      } else if (this.form.detail === "") {
-        return uni.showToast({
-          title: "详细地址不能为空不能为空",
+          title: "address can not be empty",
           duration: 1000,
           icon: "none" });
 
       }
 
       if (this.form.phone) {
-        var reg =
-        /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
+        var reg = /^(?:\+353|0)\s?(?:8[35679]|5[0-46-9]|7[0-9]|9[0-46-9])\s?\d{1,4}\s?\d{4}$/;
         if (!reg.test(this.form.phone)) {
           return uni.showToast({
-            title: "手机号输入有误",
+            title: "Phone number format is not correct",
             duration: 1000,
-            icon: "none" });
-
+            icon: "none"
+          });
         }
       }
+      
       if (this.form.name) {
-        var _reg = /^[\u0391-\uFFE5A-Za-z0-9]{2,12}$/;
+        var _reg = /^[A-Za-z\s]{2,}$/;
         if (!_reg.test(this.form.name)) {
           return uni.showToast({
-            title: "请输入合法的2-12个字符",
+            title: "Please enter a valid name",
             duration: 1000,
-            icon: "none" });
-
+            icon: "none"
+          });
         }
-      }
+      }      
+      
       var params = _objectSpread(_objectSpread({},
       this.form), {}, {
         // sex: this.form.radio,

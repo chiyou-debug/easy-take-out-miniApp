@@ -1,6 +1,6 @@
 {
   "navigationStyle": "custom",
-  "navigationBarTitleText": "个人中心",
+  "navigationBarTitleText": "Personal center",
   "enablePullDownRefresh": false,
   "navigationBarBackgroundColor": "#ffc200",
   "usingComponents": {

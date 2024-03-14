@@ -436,7 +436,7 @@ page {
   color: #f58c21;
 }
 .tag {
-  width: 68rpx;
+  width: 100rpx;
   height: 40rpx;
   line-height: 40rpx;
   text-align: center;

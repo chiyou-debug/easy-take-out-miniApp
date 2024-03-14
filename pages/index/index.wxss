@@ -300,7 +300,7 @@
   display: flex;
 }
 .home_content .restaurant_menu_list .vegetable_order_list .type_item .dish_info .dish_active_btn .check_but.data-v-57280228 {
-  width: 128rpx;
+  width: 150rpx;
   height: 48rpx;
   line-height: 48rpx;
   text-align: center;
