@@ -2698,6 +2698,8 @@ var store = new _vuex.default.Store({
     },
     // 保存地址
     setAddress: function setAddress(state, provider) {
+      console.log("select address");
+      console.log(provider);
       state.addressData = provider;
     } },
 
@@ -21836,15 +21838,16 @@ var _default = {
       orderDishPrice: 0,
       openPayType: false,
       psersonUrl: '../../static/btn_waiter_sel.png',
-      nickName: '',
-      gender: '0',
-      phoneNumber: '',
+      name: '',
+      phone: '',
       address: '',
+      city: '',
+      eircode: '',
+      addressLabel:'',
       remark: '',
       arrivalTime: '',
       orderTime: '',
       addressBookId: '',
-      addressLabel: '',
       tagLabel: '',
       // 加入购物车数量
       orderDishNumber: 0,
@@ -21955,17 +21958,18 @@ var _default = {
     this.getHarfAnOur();
 
     // 存在options说明换地址了
-    if (this.addressData() && this.addressData().detail) {
+    if (this.addressData() && this.addressData().address) {
+      console.log("address updated");
       this.addressBookId = '';
       var newAddress = this.addressData();
-      this.address = newAddress.provinceName + newAddress.cityName + newAddress.districtName + newAddress.detail;
-      this.phoneNumber = newAddress.phone;
-      this.nickName = newAddress.consignee;
-      this.gender = newAddress.sex;
+      this.address = newAddress.address;
+      this.phone = newAddress.phone;
+      this.name = newAddress.name;
       this.addressBookId = newAddress.id;
-      this.addressLabel = (0, _index.getLableVal)(newAddress.label);
+      this.addressLabel = newAddress.addressLabel;
     } else {
       // 默认地址查询
+      console.log("query default address");
       this.getAddressBookDefault();
     }
 
@@ -22038,15 +22042,12 @@ var _default = {
     getAddressBookDefault: function getAddressBookDefault() {var _this5 = this;
       (0, _api.getAddressBookDefault)().then(function (res) {
         if (res.code === 1) {
-          _this5.addressBookId = '';
-          _this5.address = res.data.provinceName + res.data.cityName + res.data.districtName + res.data.
-          detail;
-          _this5.phoneNumber = res.data.phone;
-          _this5.nickName = res.data.consignee;
-          _this5.gender = res.data.sex;
-          _this5.addressBookId = res.data.id;
-          _this5.addressLabel = (0, _index.getLableVal)(res.data.label);
-          _this5.tagLabel = res.data.label;
+          _this5.name = res.data.name;
+          _this5.phone = res.data.phone;
+          _this5.address = res.data.address;
+          _this5.city = res.data.city;
+          _this5.eircode = res.data.eircode;
+          _this5.addressLabel = res.data.addressLabel;
         }
       });
     },
@@ -22060,7 +22061,6 @@ var _default = {
       } else {
         uni.redirectTo({
           url: '/pages/address/address' });
-
       }
 
     },

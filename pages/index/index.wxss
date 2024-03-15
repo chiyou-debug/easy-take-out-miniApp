@@ -42,10 +42,10 @@
   position: absolute;
   z-index: 9;
   top: 10rpx;
-  left: 30rpx;
+  left: 15rpx;
   display: flex;
   flex-direction: column;
-  width: calc(100% - 60rpx);
+  width: calc(100% - 30rpx);
   background: white;
   box-shadow: 0px 4rpx 10rpx 0px rgba(69, 69, 69, 0.1);
   border-radius: 8rpx;
@@ -300,7 +300,7 @@
   display: flex;
 }
 .home_content .restaurant_menu_list .vegetable_order_list .type_item .dish_info .dish_active_btn .check_but.data-v-57280228 {
-  width: 150rpx;
+  width: 180rpx;
   height: 48rpx;
   line-height: 48rpx;
   text-align: center;

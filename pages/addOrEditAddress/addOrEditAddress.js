@@ -351,28 +351,15 @@ var _api = __webpack_require__(/*! ../api/api.js */ 24);function ownKeys(object,
         name: "Campus",
         type: 3 }],
 
-
       // type: 1,
       form: {
         name: "",
         phone: "",
+        addressBookId: "",
         address: "",
         city: "",
         eircode: "",
-        tags: ""
-        // name: "",
-        // phone: "",
-        // // address: '',
-        // type: 1,
-        // // radio: 0,
-        // sex: "0",
-        // provinceCode: "11",
-        // provinceName: "",
-        // cityCode: "1101",
-        // cityName: "",
-        // districtCode: "110102",
-        // districtName: "",
-        // detail: "" 
+        addressLabel: ""
       },
 
       // 联动省市县
@@ -427,28 +414,14 @@ var _api = __webpack_require__(/*! ../api/api.js */ 24);function ownKeys(object,
       (0, _api.queryAddressBookById)({ id: id }).then(function (res) {
         if (res.code === 1) {
           _this.form = {
-            provinceCode: res.data.provinceCode,
-            cityCode: res.data.cityCode,
-            districtCode: res.data.districtCode,
+            name: res.data.name,
             phone: res.data.phone,
-            name: res.data.consignee,
-            sex: res.data.sex,
-            type: Number(res.data.label),
-            detail: res.data.detail,
-            id: res.data.id };
-
-          if (
-          res.data.provinceName &&
-          res.data.cityName &&
-          res.data.districtName)
-          {
-            _this.address =
-            res.data.provinceName +
-            "/" +
-            res.data.cityName +
-            "/" +
-            res.data.districtName;
-          }
+            address: res.data.address,
+            city: res.data.city,
+            eircode: res.data.eircode,
+            addressLabel: res.data.addressLabel,
+            addressBookId: res.data.id
+          };
         }
       });
     },
@@ -461,25 +434,29 @@ var _api = __webpack_require__(/*! ../api/api.js */ 24);function ownKeys(object,
       uni.hideKeyboard();
     },
     onConfirm: function onConfirm(e) {
-      this.form.provinceCode = e.provinceCode;
-      this.form.cityCode = e.cityCode;
-      this.form.districtCode = e.areaCode;
+      // this.form.provinceCode = e.provinceCode;
+      // this.form.cityCode = e.cityCode;
+      // this.form.districtCode = e.areaCode;
+      // this.form.address = e.address;
       // 把选择的地址回显到input框中
-      this.address = e.label;
+      // this.address = e.label;
+      // this.address = e.address;
+      // console.log("confirm address")
+      // console.log(e)
     },
     bindTextAreaBlur: function bindTextAreaBlur(e) {
       console.log(e.detail.value);
     },
-    radioChange: function radioChange(e) {
-      if (e.detail.value === "man") {
-        this.form.radio = 0;
-      } else {
-        this.form.radio = 1;
-      }
-    },
-    sexChangeHandle: function sexChangeHandle(val) {
-      this.form.sex = val;
-    },
+    // radioChange: function radioChange(e) {
+    //   if (e.detail.value === "man") {
+    //     this.form.radio = 0;
+    //   } else {
+    //     this.form.radio = 1;
+    //   }
+    // },
+    // sexChangeHandle: function sexChangeHandle(val) {
+    //   this.form.sex = val;
+    // },
     // 保存地址
     addAddressFun: function addAddressFun() {
       if (this.form.name === "") {
@@ -494,9 +471,9 @@ var _api = __webpack_require__(/*! ../api/api.js */ 24);function ownKeys(object,
           duration: 1000,
           icon: "none" });
 
-      } else if (this.form.type === "") {
+      } else if (this.form.addressLabel === "") {
         return uni.showToast({
-          title: "所属标签不能为空",
+          title: "addressLabel can not by empty",
           duration: 1000,
           icon: "none" });
 
@@ -505,7 +482,6 @@ var _api = __webpack_require__(/*! ../api/api.js */ 24);function ownKeys(object,
           title: "address can not be empty",
           duration: 1000,
           icon: "none" });
-
       }
 
       if (this.form.phone) {
@@ -532,29 +508,27 @@ var _api = __webpack_require__(/*! ../api/api.js */ 24);function ownKeys(object,
       
       var params = _objectSpread(_objectSpread({},
       this.form), {}, {
-        // sex: this.form.radio,
-        label: this.form.type,
-        consignee: this.form.name,
-        provinceName: this.address.split("/")[0],
-        cityName: this.address.split("/")[1],
-        districtName: this.address.split("/")[2] });
-
+        // tags: this.form.tags,
+        addressLabel: this.form.addressLabel,
+        name: this.form.name,
+        address: this.form.address,
+        city: this.form.city,
+        eircode: this.form.eircode,
+       });
+       delete params.type
       // 编辑
       if (this.showDel) {
         (0, _api.editAddressBook)(params).then(function (res) {
           if (res.code === 1) {
             uni.redirectTo({
               url: "/pages/address/address" });
-
           }
         });
       } else {
-        delete params.id;
         (0, _api.addAddressBook)(params).then(function (res) {
           if (res.code === 1) {
             uni.redirectTo({
               url: "/pages/address/address" });
-
           }
         });
       }
@@ -571,21 +545,41 @@ var _api = __webpack_require__(/*! ../api/api.js */ 24);function ownKeys(object,
             duration: 1000,
             icon: "none" });
 
-          _this2.form.name = "";
-          _this2.form.phone = "";
-          _this2.form.address = "";
-          _this2.form.type = 1;
-          _this2.form.radio = 0;
-          _this2.form.provinceCode = "11";
-          _this2.form.cityCode = "1101";
-          _this2.form.districtCode = "110102";
+          // _this2.form.name = "";
+          // _this2.form.phone = "";
+          // _this2.form.address = "";
+          // _this2.form.type = 1;
+          // _this2.form.radio = 0;
+          // _this2.form.provinceCode = "11";
+          // _this2.form.cityCode = "1101";
+          // _this2.form.districtCode = "110102";
         }
       });
     },
     // 标签的事件
     getTextOption: function getTextOption(item) {
+      console.log(JSON.stringify(item))
+      this.form.addressLabel = item.name;
       this.form.type = item.type;
-    } } };exports.default = _default;
+    },
+    // 添加鼠标悬停时高亮效果的方法
+    highlightTag: function(event) {
+      const index = event.currentTarget.dataset.index;
+      const item = this.options[index];
+      if (item.type !== this.form.type) { // 只有当标签未被选中时才进行高亮
+        this.form.type = item.type;
+      }
+    },
+
+    // 移除鼠标悬停时的高亮效果的方法
+    removeHighlight: function(event) {
+      const index = event.currentTarget.dataset.index;
+      const item = this.options[index];
+      if (item.type === this.form.type) { // 只有当标签未被选中时才移除高亮
+        this.form.type = ''; // 或者设置为 null 或其他适当的值
+      }
+    },
+   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

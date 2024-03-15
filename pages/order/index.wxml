@@ -9,8 +9,8 @@
           </block>
           <block wx:else>
             <view class="address_name data-v-0ca91b30">
-              <view class="address data-v-0ca91b30"><text class="{{['tag','data-v-0ca91b30','tag'+tagLabel]}}">{{addressLabel}}</text><text class="word data-v-0ca91b30">{{address}}</text></view>
-              <view class="name data-v-0ca91b30"><text class="name_1 data-v-0ca91b30">{{nickName}}</text><text class="name_2 data-v-0ca91b30">{{phoneNumber}}</text></view>
+              <view class="address data-v-0ca91b30"><text class="{{['tag','data-v-0ca91b30','tag'+tag]}}">{{addressLabel}}</text><text class="word data-v-0ca91b30">{{address}}</text></view>
+              <view class="name data-v-0ca91b30"><text class="name_1 data-v-0ca91b30">{{name}}</text><text class="name_2 data-v-0ca91b30">{{phone}}</text></view>
               <block wx:if="{{address}}">
                 <view class="infoTip data-v-0ca91b30">To reduce contact and risk, contactless delivery is recommended</view>
               </block>

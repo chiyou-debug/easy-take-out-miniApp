@@ -291,6 +291,7 @@ var _reachBottom = _interopRequireDefault(__webpack_require__(/*! @/components/r
       this.testValue = false;
       uni.showLoading({ title: 'loading...', mask: true });
       (0, _api.queryAddressBookList)().then(function (res) {
+        console.log("getAddressList call...", res)
         if (res.code === 1) {
           setTimeout(function () {uni.hideLoading();}, 100);
           _this.testValue = true;

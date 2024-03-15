@@ -201,6 +201,7 @@
   font-family: PingFangSC, PingFangSC-Medium;
   font-weight: 550;
   color: #20232a;
+  padding-left: 50rpx;
 }
 .order_content .new_address .top .address_name .name.data-v-0ca91b30 {
   height: 34rpx;
