@@ -131,8 +131,10 @@ var render = function() {
     var $orig = _vm.__get_orig(item)
 
     var m0 = _vm.statusWord(item.status, _vm.getOvertime(item.orderTime))
-    var g0 = _vm.numes(item.orderDetailList).total.toFixed(2)
-    var m1 = _vm.numes(item.orderDetailList)
+    // console.log("getRecentOrdersList...");
+    // console.log("getRecentOrdersList..." + JSON.stringify(item));
+    var g0 = _vm.numes(item).total.toFixed(2)
+    var m1 = _vm.numes(item)
     var m2 = item.status === 1 && _vm.getOvertime(item.orderTime) > 0
     return {
       $orig: $orig,
@@ -336,10 +338,11 @@ var _index = __webpack_require__(/*! @/utils/index.js */ 29);function _interopRe
   },
   methods: _objectSpread(_objectSpread({},
   (0, _vuex.mapMutations)(['setAddressBackUrl'])), {}, {
-    // <!-- 1待付款 2待接单 3 已接单 4 派送中 5 已完成 6 已取消 7 退款 -->
+    // <!-- 1Pending payment 2待接单 3 已接单 4 派送中 5 已完成 6 Cancelled 7 退款 -->
     numes: function numes(list) {
       var count = 0;
       var total = 0;
+      // console.log("list...." + list);
       list.length > 0 && list.forEach(function (obj) {
         count += Number(obj.number);
         total += Number(obj.number) * Number(obj.amount);

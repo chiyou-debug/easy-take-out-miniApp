@@ -242,7 +242,7 @@ page {
   text-align: right;
 }
 .againBtn .new_btn {
-  width: 172rpx;
+  width: 178rpx;
   height: 68rpx;
   line-height: 68rpx;
   border-color: #e5e4e4;

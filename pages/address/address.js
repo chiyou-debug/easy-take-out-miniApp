@@ -341,7 +341,7 @@ var _reachBottom = _interopRequireDefault(__webpack_require__(/*! @/components/r
       (0, _api.putAddressBookDefault)({ id: item.id }).then(function (res) {
         if (res.code === 1) {
           uni.showToast({
-            title: '默认地址设置成功',
+            title: 'Default address set successfully',
             duration: 2000,
             icon: 'none' });
 

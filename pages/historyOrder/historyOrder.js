@@ -127,7 +127,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   var l1 = _vm.__map(_vm.tabBars, function(item, index) {
     var $orig = _vm.__get_orig(item)
-
+    // console.log("recentOrdersList = " + recentOrdersList);
     var l0 =
       _vm.recentOrdersList && _vm.recentOrdersList.length > 0
         ? _vm.__map(_vm.recentOrdersList, function(item, index) {
@@ -292,7 +292,7 @@ var _index = __webpack_require__(/*! @/utils/index.js */ 29);function _interopRe
       scrollH: 0,
       tabIndex: 0,
       tabBars: [
-      '全部订单', '待付款', '已取消'],
+      'All orders', 'Pending payment', 'Cancelled'],
 
       textTip: '',
       showConfirm: false,
@@ -347,7 +347,7 @@ var _index = __webpack_require__(/*! @/utils/index.js */ 29);function _interopRe
     getOvertime: function getOvertime(time) {
       return (0, _index.getOvertime)(time);
     },
-    // 获取历史订单列表
+    // 获取historyOrders列表
     getList: function getList() {var _this2 = this;
       var params = {
         pageSize: 10,
@@ -365,7 +365,7 @@ var _index = __webpack_require__(/*! @/utils/index.js */ 29);function _interopRe
         }
       });
     },
-    // 再来一单
+    // one more
     oneMoreOrder: function oneMoreOrder(id) {return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var pages, routeIndex;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 pages = getCurrentPages();
                 routeIndex = pages.findIndex(function (item) {return item.route === 'pages/index/index';});

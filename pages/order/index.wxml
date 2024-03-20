@@ -70,7 +70,7 @@
             <view class="uniInfo data-v-0ca91b30">
               <view data-event-opts="{{[['tap',[['goRemark',['$event']]]]]}}" bindtap="__e" class="data-v-0ca91b30">
                 <uni-list vue-id="3bc35b9e-2" class="data-v-0ca91b30" bind:__l="__l" vue-slots="{{['default']}}">
-                  <uni-list-item class="uniListItem data-v-0ca91b30" vue-id="{{('3bc35b9e-3')+','+('3bc35b9e-2')}}" showArrow="{{true}}" title="comments" bind:__l="__l" vue-slots="{{['footer']}}"><text class="temarkText data-v-0ca91b30" slot="footer">{{remark?remark:'Contactless delivery recommended'}}</text></uni-list-item>
+                  <uni-list-item class="uniListItem data-v-0ca91b30" vue-id="{{('3bc35b9e-3')+','+('3bc35b9e-2')}}" showArrow="{{true}}" title="remark" bind:__l="__l" vue-slots="{{['footer']}}"><text class="temarkText data-v-0ca91b30" slot="footer">{{remark?remark:'Contactless delivery recommended'}}</text></uni-list-item>
                 </uni-list>
               </view>
               <view data-event-opts="{{[['tap',[['openPopuos',['bottom']]]]]}}" bindtap="__e" class="data-v-0ca91b30">

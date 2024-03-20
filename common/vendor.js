@@ -545,7 +545,7 @@ function normalizeLocale(locale, messages) {
   }
   locale = locale.toLowerCase();
   if (locale === 'chinese') {
-    // 支付宝
+    // Alipay
     return LOCALE_ZH_HANS;
   }
   if (locale.indexOf('zh') === 0) {
@@ -1761,7 +1761,7 @@ function handleEvent(event) {var _this2 = this;
   if (!dataset) {
     return console.warn('事件信息不存在');
   }
-  var eventOpts = dataset.eventOpts || dataset['event-opts']; // 支付宝 web-view 组件 dataset 非驼峰
+  var eventOpts = dataset.eventOpts || dataset['event-opts']; // Alipay web-view 组件 dataset 非驼峰
   if (!eventOpts) {
     return console.warn('事件信息不存在');
   }
@@ -20144,7 +20144,7 @@ exports.newShoppingCartSub = newShoppingCartSub;var delShoppingCart = function d
 };
 
 
-// 最近订单和历史订单
+// Recently Ordered和historyOrders
 exports.delShoppingCart = delShoppingCart;var queryOrderUserPage = function queryOrderUserPage(params) {
   return (0, _request.request)({
     url: '/user/order/userPage',
@@ -20220,7 +20220,7 @@ exports.delAddressBook = delAddressBook;var queryAddressBookById = function quer
 };
 
 
-// 再来一单
+// one more
 exports.queryAddressBookById = queryAddressBookById;var oneOrderAgain = function oneOrderAgain(params) {
   return (0, _request.request)({
     url: '/user/order/again',
@@ -20260,7 +20260,7 @@ exports.getShopStatus = getShopStatus;var getShopPhone = function getShopPhone(p
     method: 'GET' });
 
 };
-// 历史订单
+// historyOrders
 exports.getShopPhone = getShopPhone;var getOrderPage = function getOrderPage(params) {
   return (0, _request.request)({
     url: '/user/order/historyOrders',
@@ -20293,7 +20293,7 @@ exports.reminderOrder = reminderOrder;var paymentOrder = function paymentOrder(p
       method: 'PUT',
       params: params }));};
 
-// 再来一单
+// one more
 exports.paymentOrder = paymentOrder;var repetitionOrder = function repetitionOrder(params) {return (
     (0, _request.request)({
       url: "/user/order/repetition/".concat(params),
@@ -21133,9 +21133,9 @@ exports.splitMobile = splitMobile;var getLableVal = function getLableVal(item) {
 // 状态
 exports.getLableVal = getLableVal;var statusWord = function statusWord(status, time) {
   if (status === 1 && time > 0) {
-    return '待付款';
+    return 'Pending payment';
   } else if (status === 6 || time < 0 && status === 1) {
-    return '已取消';
+    return 'Cancelled';
   }
   switch (status) {
     case 2:
@@ -21561,7 +21561,7 @@ function initVueI18n(locale) {var messages = arguments.length > 1 && arguments[1
       var isWatchedAppLocale = false;
       _t = function t(key, values) {
         var appVm = getApp().$vm;
-        // 可能$vm还不存在，比如在支付宝小程序中，组件定义较早，在props的default里使用了t()函数（如uni-goods-nav），此时app还未初始化
+        // 可能$vm还不存在，比如在Alipay小程序中，组件定义较早，在props的default里使用了t()函数（如uni-goods-nav），此时app还未初始化
         // options: {
         // 	type: Array,
         // 	default () {
@@ -22212,7 +22212,7 @@ var _default = {
         }
 
         if (this.tableware !== 'Provided according to meal size' || this.tableware !== 'No cutlery required') {
-          this.tablewareData = this.tableware + '份';
+          this.tablewareData = this.tableware + ' serving';
 
         } else {
           this.tablewareData = this.tableware;
@@ -28556,7 +28556,7 @@ var _default = {
         if (res.code === 1) {
           _this3.isPayment = true;
           _this3.showConfirm = true;
-          _this3.textTip = '您的订单已取消！';
+          _this3.textTip = '您的订单Cancelled！';
           _this3.$refs.commonPopup.open(type);
           _this3.orderId = obj.id;
         }
@@ -28572,7 +28572,7 @@ var _default = {
         this.textTip = '请联系商家进行取消！';
       }
     },
-    // 再来一单
+    // one more
     oneMoreOrder: function oneMoreOrder(id) {return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
 
                   (0, _api.delShoppingCart)());case 2:
@@ -28588,7 +28588,7 @@ var _default = {
     statusWord: function statusWord(status) {
       console.log(this.timeout, status);
       if (this.timeout && status === 1 || this.orderDetailsData.status === 6) {
-        return '订单已取消';
+        return '订单Cancelled';
       }
       switch (status) {
         case 2:
