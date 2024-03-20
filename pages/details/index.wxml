@@ -7,15 +7,15 @@
           <view class="tit data-v-54d3589c">{{$root.m0}}</view>
           <block wx:if="{{!timeout&&orderDetailsData.status===1}}">
             <view class="data-v-54d3589c">
-              <view class="tit data-v-54d3589c">等待支付</view>
+              <view class="tit data-v-54d3589c">wait for payment</view>
               <view class="time data-v-54d3589c">
-                <view class="timeIcon data-v-54d3589c"></view>等待支付：<text class="data-v-54d3589c">{{rocallTime}}</text><text class="data-v-54d3589c">{{paymentTime}}</text>
+                <view class="timeIcon data-v-54d3589c"></view>wait for payment：<text class="data-v-54d3589c">{{rocallTime}}</text><text class="data-v-54d3589c">{{paymentTime}}</text>
               </view>
             </view>
           </block>
           <view class="againBtn data-v-54d3589c">
             <block wx:if="{{!timeout&&orderDetailsData.status===1||orderDetailsData.status===2||orderDetailsData.status===3||orderDetailsData.status===4}}"><button class="new_btn data-v-54d3589c" type="default" data-event-opts="{{[['tap',[['handleCancel',['center','$0'],['orderDetailsData']]]]]}}" bindtap="__e">Cancel Order</button></block>
-            <block wx:if="{{!timeout&&orderDetailsData.status===1}}"><button class="new_btn btn data-v-54d3589c" type="default" data-event-opts="{{[['tap',[['handlePay',['$0'],['orderDetailsData.id']]]]]}}" bindtap="__e">立即支付</button></block>
+            <block wx:if="{{!timeout&&orderDetailsData.status===1}}"><button class="new_btn btn data-v-54d3589c" type="default" data-event-opts="{{[['tap',[['handlePay',['$0'],['orderDetailsData.id']]]]]}}" bindtap="__e">pay now</button></block>
             <block wx:if="{{orderDetailsData.status===2}}"><button class="new_btn btn data-v-54d3589c" type="default" data-event-opts="{{[['tap',[['handleReminder',['center','$0'],['orderDetailsData.id']]]]]}}" bindtap="__e">催单</button></block>
             <block wx:if="{{orderDetailsData.status==5}}"><button class="new_btn data-v-54d3589c" type="default" data-event-opts="{{[['tap',[['handleRefund',['center']]]]]}}" bindtap="__e">申请退款</button></block>
             <block wx:if="{{orderDetailsData.status!==7}}"><button class="new_btn data-v-54d3589c" type="default" data-event-opts="{{[['tap',[['oneMoreOrder',['$0'],['orderDetailsData.id']]]]]}}" bindtap="__e">one more</button></block>
@@ -24,7 +24,7 @@
       </view>
       <block wx:if="{{!timeout&&orderDetailsData.status===1}}">
         <view class="box timeTip data-v-54d3589c">
-          <view class="icon newIcon data-v-54d3589c"></view>请在15分钟内完成支付，超时将自动取消。
+          <view class="icon newIcon data-v-54d3589c"></view>Please pay within 15 minutes or the order will cancel automatically.
         </view>
       </block>
       <block wx:if="{{orderDetailsData.status===6&&orderDetailsData.payStatus===2}}">
@@ -58,8 +58,8 @@
               </block>
             </view>
             <view class="orderList data-v-54d3589c">
-              <view class="orderInfo data-v-54d3589c"><text class="text data-v-54d3589c">打包费</text><text class="may data-v-54d3589c">￥</text>{{''+orderDetailsData.packAmount+''}}</view>
-              <view class="orderInfo data-v-54d3589c"><text class="text data-v-54d3589c">配送费</text><text class="may data-v-54d3589c">￥</text>6</view>
+              <view class="orderInfo data-v-54d3589c"><text class="text data-v-54d3589c">packing fee</text><text class="may data-v-54d3589c">￥</text>{{''+orderDetailsData.packAmount+''}}</view>
+              <view class="orderInfo data-v-54d3589c"><text class="text data-v-54d3589c">delivery fee</text><text class="may data-v-54d3589c">￥</text>6</view>
               <view class="totalMoney data-v-54d3589c">合计<text class="text data-v-54d3589c"><text class="data-v-54d3589c">￥</text>{{''+orderDetailsData.amount+''}}</text></view>
             </view>
           </view>
@@ -67,7 +67,7 @@
       </view>
       <view class="box contactMerchant data-v-54d3589c">
         <view data-event-opts="{{[['tap',[['handlePhone',['bottom']]]]]}}" bindtap="__e" class="data-v-54d3589c">
-          <view class="phoneIcon data-v-54d3589c"></view>联系商家
+          <view class="phoneIcon data-v-54d3589c"></view>Call restaurant
         </view>
       </view>
       <view class="box data-v-54d3589c">
@@ -88,7 +88,7 @@
       <view class="box data-v-54d3589c">
         <view class="orderBaseInfo data-v-54d3589c">
           <view class="data-v-54d3589c">
-            <view class="data-v-54d3589c">订单号码</view>
+            <view class="data-v-54d3589c">Order number</view>
             <view class="data-v-54d3589c">{{orderDetailsData.number}}</view>
           </view>
           <view class="data-v-54d3589c">
@@ -97,7 +97,7 @@
           </view>
           <view class="data-v-54d3589c">
             <view class="data-v-54d3589c">Order method</view>
-            <view class="data-v-54d3589c">{{orderDetailsData.payMethod===1?'微信':'Alipay'}}</view>
+            <view class="data-v-54d3589c">{{orderDetailsData.payMethod===1?'Wechat':'Alipay'}}</view>
           </view>
           <view class="data-v-54d3589c">
             <view class="data-v-54d3589c">Quantity of tableware</view>

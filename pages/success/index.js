@@ -199,7 +199,7 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function ownKeys(object, enumera
         url: '/pages/index/index?status=' + '不验证' });
 
     },
-    // 查看订单
+    // check order
     goOrder: function goOrder() {
       uni.navigateTo({
         // url: '/pages/details/index?orderId=269'

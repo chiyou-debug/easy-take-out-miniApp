@@ -28676,7 +28676,7 @@ var _default = {
       this.$refs.commonPopup.close(type);
       this.getBaseData(this.orderId);
     },
-    // 立即支付
+    // pay now
     handlePay: function handlePay(id) {
       var obj = {
         orderNumber: this.orderDetailsData.number,

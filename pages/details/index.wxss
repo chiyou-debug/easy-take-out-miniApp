@@ -813,7 +813,7 @@
 }
 .orderBaseInfo > view > view:first-child {
   padding-right: 40rpx;
-  width: 110rpx;
+  width: 200rpx;
   color: #666;
 }
 .bottomBox {
